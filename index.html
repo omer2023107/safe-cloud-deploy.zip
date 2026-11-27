@@ -432,6 +432,7 @@
                 <option value="SQLite WAL">SQLite (WAL)</option>
                 <option value="MariaDB 11">MariaDB 11</option>
                 <option value="Oracle XE">Oracle XE</option>
+                <option value="Turso (libSQL)">Turso (libSQL)</option>
                 <option value="None">بدون قاعدة</option>
               </select>
             </div>
@@ -444,6 +445,21 @@
                 <option value="VirtualBox-Lab-01">VirtualBox-Lab-01</option>
                 <option value="Render-Railway-Node">Render / Railway</option>
                 <option value="Vercel-Edge-Sandbox">Vercel Edge</option>
+              </select>
+            </div>
+            <div>
+              <label for="new-app-mode" class="block font-semibold text-slate-300 mb-1">نوع السيرفر (Offline / Online)</label>
+              <select id="new-app-mode" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+                <option value="Online">Online (سحابي متصل)</option>
+                <option value="Offline">Offline (خادم محلي معزول)</option>
+              </select>
+            </div>
+            <div>
+              <label for="new-app-partitions" class="block font-semibold text-slate-300 mb-1">تقسيم الخادم (Partitions)</label>
+              <select id="new-app-partitions" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-white focus:outline-none focus:border-amber-400">
+                <option value="1">1 (خادم موحد)</option>
+                <option value="2">2 (خادمان مقسّمان)</option>
+                <option value="3" selected>3 (3 خوادم مقسّمة)</option>
               </select>
             </div>
             <div>
@@ -596,9 +612,14 @@
             <div id="panel-manage" class="hidden space-y-4 text-xs">
               <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2.5">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                  <span class="font-bold text-slate-300">PACKAGES (الحزم والمكتبات)</span>
-                  <form id="add-pkg-form" class="flex gap-1.5">
-                    <input id="pkg-name-input" type="text" placeholder="مثال: fastapi>=0.115" class="mono rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-white focus:outline-none focus:border-amber-400" />
+                  <span class="font-bold text-slate-300">PACKAGES (الحزم والمكتبات — رفع وتنزيل)</span>
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <label for="srv-upload-pkg" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold cursor-pointer">⬆ رفع حزمة</label>
+                    <input id="srv-upload-pkg" type="file" multiple class="hidden" />
+                    <button type="button" id="btn-download-pkgs" class="px-2.5 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold cursor-pointer">⬇ تنزيل الحزم</button>
+                  </div>
+                  <form id="add-pkg-form" class="flex flex-wrap gap-1.5 w-full sm:w-auto">
+                    <input id="pkg-name-input" type="text" placeholder="مثال: fastapi>=0.115" class="mono flex-1 sm:flex-none rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-white focus:outline-none focus:border-amber-400" />
                     <button type="submit" class="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold cursor-pointer">+ Add</button>
                   </form>
                 </div>
@@ -630,9 +651,14 @@
             <!-- Sub-Panel 3: File Manager -->
             <div id="panel-files" class="hidden space-y-3 text-xs">
               <div class="flex flex-wrap items-center justify-between gap-2">
-                <span class="font-bold text-slate-300">FILE MANAGER (مدير ملفات المشروع)</span>
-                <form id="add-file-form" class="flex gap-1.5">
-                  <input id="new-file-name" type="text" placeholder="اسم ملف أو مجلد (مثل: config.json)" class="mono rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-white focus:outline-none focus:border-amber-400" />
+                <span class="font-bold text-slate-300">FILE MANAGER (رفع وتنزيل الملفات والحزم)</span>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <label for="srv-upload-files" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold cursor-pointer">⬆ رفع ملف / حزمة</label>
+                  <input id="srv-upload-files" type="file" multiple class="hidden" />
+                  <button type="button" id="btn-export-srv-bundle" class="px-2.5 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold cursor-pointer">⬇ تصدير حزمة الخادم</button>
+                </div>
+                <form id="add-file-form" class="flex flex-wrap gap-1.5 w-full sm:w-auto">
+                  <input id="new-file-name" type="text" placeholder="اسم ملف أو مجلد (مثل: config.json)" class="mono flex-1 sm:flex-none rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1 text-xs text-white focus:outline-none focus:border-amber-400" />
                   <button type="submit" class="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold cursor-pointer">+ ملف</button>
                   <button type="button" id="btn-add-folder" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold cursor-pointer">+ مجلد</button>
                 </form>
@@ -714,6 +740,32 @@
               <div class="flex flex-wrap gap-2">
                 <button type="button" id="btn-save-deploy" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold cursor-pointer">حفظ ومزامنة إعادة النشر (Redeploy)</button>
                 <button type="button" id="btn-goto-settings" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold border border-slate-700 cursor-pointer">إدارة جدار الحماية وIAM</button>
+              </div>
+                          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-sky-500/35 space-y-3 text-xs">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span class="font-extrabold text-sky-300">الربط والاسترداد من بيئات التطوير (VS Code / GitHub / Cursor / Docker)</span>
+                  <span class="px-2 py-0.5 rounded bg-sky-500/15 text-sky-300 border border-sky-500/30 font-semibold">مزامنة ثنائية الاتجاه</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div>
+                    <label for="dev-env-provider" class="block font-semibold text-slate-300 mb-1">بيئة التطوير المصدرية</label>
+                    <select id="dev-env-provider" class="w-full rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1.5 text-white focus:outline-none focus:border-sky-400">
+                      <option value="VS Code Workspace">VS Code Workspace (Remote / MCP)</option>
+                      <option value="GitHub Repository">GitHub Repository (Main / PR)</option>
+                      <option value="Cursor / Copilot IDE">Cursor / AI Coding IDE</option>
+                      <option value="Docker Registry">Docker Compose / Registry</option>
+                      <option value="Local CLI">Local Terminal (safecloud-cli)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="dev-env-uri" class="block font-semibold text-slate-300 mb-1">مسار المستودع أو مساحة العمل</label>
+                    <input id="dev-env-uri" type="text" value="github.com/omer2023107/safe-cloud-mvp" class="mono w-full rounded-lg bg-slate-950 border border-slate-700 px-2.5 py-1.5 text-white focus:outline-none focus:border-sky-400" />
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" id="btn-dev-pull" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold cursor-pointer">⬇ استرداد الملفات والحزم من البيئة</button>
+                  <button type="button" id="btn-dev-export-cfg" class="px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold cursor-pointer">⬆ تصدير إعداد الربط إلى بيئة التطوير</button>
+                </div>
               </div>
             </div>
 
@@ -944,12 +996,34 @@
               </select>
             </div>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="scan-server-mode" class="block text-xs font-semibold text-slate-300 mb-1">
+                  نوع الخادم (Offline / Online) <span class="text-rose-400">*</span>
+                </label>
+                <select id="scan-server-mode" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                  <option value="Online">Online (سحابي متصل)</option>
+                  <option value="Offline">Offline (محلي معزول)</option>
+                </select>
+              </div>
+              <div>
+                <label for="scan-partitions" class="block text-xs font-semibold text-slate-300 mb-1">
+                  تقسيم الموارد (Partitions) <span class="text-rose-400">*</span>
+                </label>
+                <select id="scan-partitions" class="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
+                  <option value="1">1 خادم</option>
+                  <option value="2">2 خادمان</option>
+                  <option value="3" selected>3 خوادم مقسّمة</option>
+                </select>
+              </div>
+            </div>
+
             <div>
               <div class="flex items-center justify-between mb-1">
                 <label for="config-json" class="block text-xs font-semibold text-slate-300">
                   ملف الإعدادات والسجلات (JSON) <span class="text-rose-400">*</span>
                 </label>
-                <span id="char-count" class="text-[11px] text-slate-400">0 / 5000 حرف</span>
+                <span id="char-count" class="text-[11px] text-slate-400">0 / 12000 حرف</span>
               </div>
               <textarea id="config-json" rows="9" class="mono w-full rounded-xl bg-slate-950 border border-slate-700 p-3 text-xs text-amber-100 focus:outline-none focus:border-amber-400 leading-relaxed"></textarea>
             </div>
@@ -1825,8 +1899,8 @@
 
       function updateCharCount() {
         const len = jsonInput.value.length;
-        charCountEl.textContent = len + ' / 5000 حرف';
-        charCountEl.className = len > 5000 ? 'text-[11px] text-rose-400 font-bold' : 'text-[11px] text-slate-400';
+        charCountEl.textContent = len + ' / 12000 حرف';
+        charCountEl.className = len > 12000 ? 'text-[11px] text-rose-400 font-bold' : 'text-[11px] text-slate-400';
       }
 
       function addAudit(action, detail) {
@@ -2380,6 +2454,7 @@
             </div>
             <div class="flex items-center gap-3">
               <span class="text-[11px] text-slate-500">${escapeHtml(f.size)}</span>
+              ${f.type !== 'folder' ? `<button type="button" data-dl-file="${idx}" class="text-sky-400 hover:text-sky-300 text-[11px] font-bold cursor-pointer">⬇ تنزيل</button>` : ''}
               <button type="button" data-del-file="${idx}" class="text-rose-400 hover:text-rose-300 text-[11px] font-bold cursor-pointer">حذف</button>
             </div>
           </div>
@@ -2567,7 +2642,142 @@
         showToast(`تم إنشاء المجلد ${name}.`, 'ok');
       });
 
+      function triggerDownload(filename, content, mimeType) {
+        const blob = new Blob([content], { type: mimeType || 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      
+      document.getElementById('srv-upload-pkg').addEventListener('change', (e) => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length) return;
+        const app = getSelectedApp();
+        files.forEach(f => {
+          if (!app.packages.includes(f.name)) app.packages.push(f.name);
+          const sizeStr = f.size >= 1048576 ? (f.size / 1048576).toFixed(2) + ' MB' : Math.max(1, Math.round(f.size / 1024)) + ' KB';
+          app.files.unshift({ name: f.name, type: 'package', size: sizeStr, content: '' });
+          app.logs.push(`[Packages] Uploaded package ${f.name} (${sizeStr})`);
+        });
+        addAudit('رفع حزم إلى المنصة', `تم رفع ${files.length} حزمة إلى ${app.name}`);
+        showToast(`تم رفع ${files.length} حزمة إلى ${app.name}.`, 'ok');
+        e.target.value = '';
+        renderSelectedServer();
+      });
+
+      document.getElementById('btn-download-pkgs').addEventListener('click', () => {
+        const app = getSelectedApp();
+        const pkgManifest = {
+          server: app.name,
+          runtime: app.runtime,
+          packages: app.packages,
+          addons: app.addons,
+          exported_at: new Date().toISOString()
+        };
+        triggerDownload(`${app.name}-packages.json`, JSON.stringify(pkgManifest, null, 2), 'application/json');
+        addAudit('تنزيل الحزم من المنصة', `تم تنزيل قائمة حزم ${app.name}-packages.json`);
+        showToast(`تم تنزيل حزم ${app.name}.`, 'ok');
+      });
+
+      document.getElementById('srv-upload-files').addEventListener('change', (e) => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length) return;
+        const app = getSelectedApp();
+        files.forEach(file => {
+          const sizeStr = file.size >= 1048576 ? (file.size / 1048576).toFixed(2) + ' MB' : Math.max(1, Math.round(file.size / 1024)) + ' KB';
+          const isPkg = /\.(zip|tar|gz|rar|7z|whl|tgz)$/i.test(file.name);
+          const entry = { name: file.name, type: isPkg ? 'package' : 'file', size: sizeStr, content: '' };
+          if (file.size <= 256000 && !isPkg) {
+            const reader = new FileReader();
+            reader.onload = () => { entry.content = String(reader.result || ''); };
+            reader.readAsText(file);
+          }
+          app.files.unshift(entry);
+          if (isPkg && !app.packages.includes(file.name)) {
+            app.packages.push(file.name);
+          }
+          app.logs.push(`[Files] Uploaded ${file.name} (${sizeStr}) to ${app.name}`);
+        });
+        addAudit('رفع ملفات/حزم إلى المنصة', `تم رفع ${files.length} ملف/حزمة إلى الخادم ${app.name}`);
+        showToast(`تم رفع ${files.length} ملف/حزمة إلى ${app.name} بنجاح.`, 'ok');
+        e.target.value = '';
+        renderSelectedServer();
+      });
+
+      
+      document.getElementById('btn-dev-pull').addEventListener('click', () => {
+        const app = getSelectedApp();
+        const provider = document.getElementById('dev-env-provider').value;
+        const uri = document.getElementById('dev-env-uri').value.trim() || 'workspace/default';
+        const pulledFiles = [
+          { name: 'safecloud-sync.json', type: 'file', size: '2 KB', content: JSON.stringify({ provider, source: uri, server: app.name, synced_at: new Date().toISOString() }, null, 2) },
+          { name: 'dev-bundle.tar.gz', type: 'package', size: '148 KB', content: '' }
+        ];
+        pulledFiles.forEach(pf => {
+          if (!app.files.some(f => f.name === pf.name)) app.files.unshift(pf);
+        });
+        if (!app.packages.includes('safecloud-agent-sync')) app.packages.push('safecloud-agent-sync');
+        app.logs.push(`[DevSync] Pulled workspace & packages from ${provider} (${uri})`);
+        addAudit('استرداد من بيئة التطوير', `تم ربط واسترداد الملفات والحزم من ${provider} (${uri}) إلى ${app.name}`);
+        showToast(`تم الاسترداد من ${provider} إلى ${app.name} بنجاح.`, 'ok');
+        renderSelectedServer();
+      });
+
+      document.getElementById('btn-dev-export-cfg').addEventListener('click', () => {
+        const app = getSelectedApp();
+        const provider = document.getElementById('dev-env-provider').value;
+        const uri = document.getElementById('dev-env-uri').value.trim() || 'workspace/default';
+        const cfg = {
+          platform: 'SAFE CLOUD',
+          provider,
+          source_uri: uri,
+          server_id: app.id,
+          server_name: app.name,
+          mode: app.config.mode || 'Online',
+          partitions: app.config.partitions || 3,
+          tunnel_protocol: 'mTLS-Outbound',
+          safety_valve: !state.monitoring.preAuthAutoFix
+        };
+        triggerDownload('safecloud-dev-link.json', JSON.stringify(cfg, null, 2), 'application/json');
+        addAudit('تصدير ربط بيئة التطوير', `تم تصدير ملف الربط safecloud-dev-link.json لبيئة ${provider}`);
+        showToast(`تم تنزيل ملف الربط لبيئة ${provider}.`, 'ok');
+      });
+
+      document.getElementById('btn-export-srv-bundle').addEventListener('click', () => {
+        const app = getSelectedApp();
+        const safeBundle = {
+          server: app.name,
+          runtime: app.runtime,
+          database: app.db,
+          packages: app.packages,
+          addons: app.addons,
+          files: app.files.map(f => ({ name: f.name, type: f.type, size: f.size })),
+          config: app.config,
+          exported_at: new Date().toISOString()
+        };
+        triggerDownload(`${app.name}-bundle.json`, JSON.stringify(safeBundle, null, 2), 'application/json');
+        addAudit('تصدير حزمة من المنصة', `تم تنزيل حزمة ${app.name}-bundle.json دون أسرار`);
+        showToast(`تم تنزيل حزمة ${app.name} إلى جهازك.`, 'ok');
+      });
+
       document.getElementById('srv-files-list').addEventListener('click', (e) => {
+        const dlBtn = e.target.closest('[data-dl-file]');
+        if (dlBtn) {
+          const app = getSelectedApp();
+          const f = app.files[Number(dlBtn.getAttribute('data-dl-file'))];
+          if (!f) return;
+          const body = f.content || `// SAFE CLOUD Export: ${f.name}\n// Server: ${app.name}\n` + JSON.stringify(app.config, null, 2);
+          triggerDownload(f.name, body, 'text/plain;charset=utf-8');
+          addAudit('تنزيل ملف من المنصة', `تم تنزيل ${f.name} من الخادم ${app.name}`);
+          showToast(`تم تنزيل ${f.name} بنجاح.`, 'ok');
+          return;
+        }
         const btn = e.target.closest('[data-del-file]');
         if (!btn) return;
         const app = getSelectedApp();
@@ -3167,8 +3377,8 @@
 
         if (!raw) {
           errors.push('ملف الإعدادات (JSON) حقل إلزامي.');
-        } else if (raw.length < 10 || raw.length > 5000) {
-          errors.push('طول نص JSON يجب أن يكون بين 10 و5000 حرف.');
+        } else if (raw.length < 20 || raw.length > 12000) {
+          errors.push('طول نص JSON يجب أن يكون بين 20 و12000 حرف.');
         }
 
         let parsed = null;
