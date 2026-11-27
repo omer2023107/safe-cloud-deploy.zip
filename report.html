@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFE CLOUD — الوثيقة الشاملة، المقارنة الموسعة، وبوابة الفيديو</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: rgba(15, 23, 42, 0.88);
+      --surface-2: rgba(30, 41, 59, 0.72);
+      --ink: #f8fafc;
+      --ink2: #cbd5e1;
+      --mute: #94a3b8;
+      --hair: rgba(51, 65, 85, 0.85);
+      --amber: #f59e0b;
+      --amber-soft: rgba(245, 158, 11, 0.14);
+      --emerald: #10b981;
+      --emerald-soft: rgba(16, 185, 129, 0.14);
+      --sky: #38bdf8;
+      --sky-soft: rgba(56, 189, 248, 0.14);
+      --rose: #fb7185;
+      --rose-soft: rgba(251, 113, 133, 0.14);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(14, 165, 233, 0.12), transparent 36%),
+        radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.10), transparent 34%),
+        radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.08), transparent 40%),
+        var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      padding: 40px clamp(16px, 5vw, 72px) 84px;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--sky);
+      text-decoration: none;
+      transition: color 0.18s ease, opacity 0.18s ease;
+    }
+    a:hover { color: var(--amber); text-decoration: underline; text-underline-offset: 4px; }
+
+    .mono {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 13px;
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header.hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.78));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 22px;
+      padding: clamp(22px, 4vw, 38px);
+      box-shadow: 0 20px 50px rgba(2, 6, 23, 0.65);
+    }
+
+    .brand-line {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--amber-soft);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fcd34d;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(26px, 4vw, 44px);
+      line-height: 1.24;
+      font-weight: 700;
+      text-wrap: balance;
+      background: linear-gradient(90deg, #ffffff, #e2e8f0, #fcd34d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .deck {
+      max-width: 78ch;
+      font-size: 16.5px;
+      color: var(--ink2);
+      margin: 0 0 22px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b1120;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.28);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+    .btn-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(245, 158, 11, 0.4);
+      color: #0b1120;
+      text-decoration: none;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--hair);
+    }
+
+    .hero-metrics > div {
+      background: var(--surface-2);
+      border: 1px solid var(--hair);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .metric-val {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #38bdf8;
+    }
+
+    .metric-label {
+      font-size: 13px;
+      color: var(--mute);
+      margin-top: 4px;
+    }
+
+    .toc-nav {
+      margin-top: 28px;
+      padding: 22px 24px;
+      background: var(--surface);
+      border: 1px solid var(--hair);
+      border-radius: 18px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px 16px;
+      margin-top: 14px;
+      font-size: 13.5px;
+    }
+
+    .toc-grid a {
+      display: block;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(51, 65, 85, 0.7);
+      color: #e2e8f0;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    }
+    .toc-grid a:hover {
+      border-color: var(--amber);
+      background: var(--amber-soft);
+      color: #fcd34d;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .sec {
+      margin-top: 32px;
+      padding: clamp(20px, 3vw, 30px);
+      background: var(--surface);
+      border: 1px solid var(--hair);
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(2, 6, 23, 0.4);
+    }
+
+    h2 {
+      font-size: clamp(20px, 2.4vw, 27px);
+      line-height: 1.35;
+      margin: 0 0 14px;
+      font-weight: 800;
+      color: #f8fafc;
+      border-right: 4px solid var(--amber);
+      padding-right: 12px;
+    }
+
+    h3 {
+      font-size: 17px;
+      line-height: 1.4;
+      margin: 0 0 8px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    p {
+      max-width: 78ch;
+      margin: 0 0 12px;
+      color: var(--ink2);
+    }
+
+    .sec-anchor {
+      font-size: 13px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--amber);
+      background: var(--amber-soft);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 1px 7px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-right: 8px;
+      font-weight: 700;
+    }
+    .sec-anchor:hover { background: var(--amber); color: #0b1120; text-decoration: none; }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+    .split > div {
+      background: var(--surface-2);
+      border: 1px solid var(--hair);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .strip > div {
+      background: var(--surface-2);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .band {
+      margin: 32px 0 0;
+      padding: clamp(20px, 3vw, 32px);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.10), rgba(14, 165, 233, 0.10));
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 20px;
+    }
+
+    .band-inner { max-width: 1200px; margin: 0 auto; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 16px;
+      border: 1px solid var(--hair);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.92);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: right;
+    }
+
+    th {
+      font-weight: 800;
+      color: #fcd34d;
+      background: rgba(30, 41, 59, 0.95);
+      border-bottom: 2px solid rgba(245, 158, 11, 0.45);
+      padding: 13px 12px;
+      white-space: nowrap;
+      vertical-align: bottom;
+    }
+
+    td {
+      border-bottom: 1px solid var(--hair);
+      padding: 12px;
+      vertical-align: top;
+      color: var(--ink2);
+    }
+
+    tbody tr:hover { background: rgba(30, 41, 59, 0.5); }
+
+    td.yes { color: #34d399; font-weight: 700; white-space: nowrap; }
+    td.partial { color: #fbbf24; font-weight: 600; white-space: nowrap; }
+    td.no { color: #fb7185; white-space: nowrap; }
+
+    /* Video Controls & Buttons */
+    .video-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0;
+      align-items: center;
+    }
+    .video-input {
+      flex: 1 1 300px;
+      padding: 11px 14px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      direction: ltr;
+      color: #f8fafc;
+      background: #0f172a;
+    }
+    .video-input:focus { outline: none; border-color: var(--amber); }
+
+    .btn-action {
+      padding: 11px 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #052e16;
+      border: none;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    .btn-action:hover { transform: translateY(-1px); opacity: 0.95; }
+
+    .btn-secondary {
+      padding: 11px 16px;
+      background: rgba(51, 65, 85, 0.8);
+      color: #f8fafc;
+      border: 1px solid var(--hair);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .btn-secondary:hover { background: rgba(71, 85, 105, 0.9); }
+
+    .video-stage {
+      margin-top: 16px;
+      border-top: 1px solid var(--hair);
+      padding-top: 16px;
+    }
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 14px;
+      background: #020617;
+    }
+    .hidden { display: none; }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .field-item {
+      background: var(--surface-2);
+      border: 1px solid var(--hair);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+
+    .field-meta {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: var(--emerald-soft);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      font-size: 12px;
+      color: #6ee7b7;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 8px; }
+    .filter-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--hair);
+      background: var(--surface-2);
+      color: var(--ink2);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover { border-color: var(--sky); color: #ffffff; }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b1120;
+      border-color: transparent;
+    }
+
+    blockquote.pull {
+      margin: 32px 0 0;
+      padding: 22px 26px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-right: 5px solid var(--amber);
+      border-radius: 16px;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.55;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    ol.sources {
+      padding-right: 22px;
+      margin: 14px 0 0;
+      color: var(--ink2);
+      font-size: 14px;
+    }
+    ol.sources li { margin-bottom: 8px; }
+  
+    /* Full Multi-Screen Responsive Hardening (320px -> 4K, Portrait & Landscape) */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .page, header.hero, .sec, .band, .toc-nav, .field-item, .split > div, .strip > div {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    .mono, a { overflow-wrap: anywhere; word-break: break-word; }
+    .hero-metrics { grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+    .toc-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+    .field-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); }
+    .split { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+    .strip { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+    .video-input { flex: 1 1 min(100%, 260px); min-width: 0; width: 100%; }
+    .table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    th { white-space: normal; min-width: 115px; }
+    td { min-width: 130px; }
+
+    @media (max-width: 640px) {
+      body { padding: 16px 12px 48px; font-size: 14.5px; }
+      header.hero, .sec, .band, .toc-nav { padding: 16px 14px; border-radius: 14px; }
+      h1 { font-size: 24px; line-height: 1.3; }
+      h2 { font-size: 19px; padding-right: 10px; }
+      h3 { font-size: 15.5px; }
+      .metric-val { font-size: 22px; }
+      .btn-link, .btn-action, .btn-secondary { width: 100%; justify-content: center; text-align: center; }
+      .filter-btn { flex: 1 1 calc(50% - 8px); text-align: center; font-size: 12px; padding: 8px 10px; }
+      td.yes, td.partial, td.no { white-space: normal; }
+      blockquote.pull { padding: 14px 16px; font-size: 16px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div class="brand-line">SAFE CLOUD — الإدارة الذكية وأمن الحوسبة السحابية · فريق وحدة الظل السيبرانية (شراع 2026)</div>
+      <h1>منصة موحدة لإدارة وأمن الخوادم المحلية والسحابية وتكامل الاستضافات تحت ظل واحد</h1>
+      <p class="deck">
+        المرجع الكامل لمشروع <strong>SAFE CLOUD</strong>: يضم وثيقة النموذج الأولي بعناصرها السبعة لمنصة فلك، وبوابة لإدراج وعرض فيديو التشغيل مباشرةً للزوار، ومقارنة تفصيلية مع عشر منصات سحابية وأمنية (المشكلة، القصور، الحل المقدم، والقيمة المضافة)، إلى جانب الميزات الكاملة للنموذج وخارطة النظام الحقيقي القابل للتثبيت على Ubuntu وLinux وWindows Server.
+      </p>
+      <div class="hero-links">
+        <a class="btn-link" href="https://safe-cloud-mvp.vercel.app/" target="_blank" rel="noopener noreferrer">فتح النموذج الأولي التفاعلي (Vercel)</a>
+      </div>
+      <div class="hero-metrics">
+        <div>
+          <div class="metric-val">10 منصات</div>
+          <div class="metric-label">مقارنة شاملة (المشكلة، الحل، القيمة)</div>
+        </div>
+        <div>
+          <div class="metric-val">7 عناصر</div>
+          <div class="metric-label">وثيقة النموذج الأولي لمنصة فلك</div>
+        </div>
+        <div>
+          <div class="metric-val">Offline + Online</div>
+          <div class="metric-label">إدارة محلية وتكامل سحابي موحد</div>
+        </div>
+        <div>
+          <div class="metric-val">صمام أمان</div>
+          <div class="metric-label">مراقبة وتنبؤ دون تعديل غير مصرح به</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- الفهرس الشامل للوثيقة وروابط الانتقال السريع -->
+    <nav class="toc-nav" aria-label="فهرس الوثيقة الشاملة">
+      <h2>فهرس الوثيقة الشاملة وروابط التنقل السريع</h2>
+      <div class="toc-grid">
+        <a href="#video-section">1. بوابة فيديو العرض التطبيقي (≤ 3 دقائق)</a>
+        <a href="#gap-and-ai">2. الفجوة الحالية في المنصات وما سدّه SAFE CLOUD</a>
+        <a href="#ai-role">3. العمل الفعلي لنموذج الذكاء الاصطناعي</a>
+        <a href="#falak-7-fields">4. وثيقة النموذج الأولي — العناصر السبعة لمنصة فلك</a>
+        <a href="#field-1">4.1 الشريحة الرفيعة</a>
+        <a href="#field-2">4.2 نموذج الإدخال وجدول البيانات التجريبية</a>
+        <a href="#field-3">4.3 أمر المكون الذكي بأجزائه الستة</a>
+        <a href="#field-4">4.4 السلسلة الكاملة وقواعد التحقق</a>
+        <a href="#field-5">4.5 اختبار ثلاثة سيناريوهات</a>
+        <a href="#field-6">4.6 رابط النموذج ورابط المقطع</a>
+        <a href="#field-7">4.7 ما الذي ينقص النموذج؟</a>
+        <a href="#mvp-capabilities">5. القدرات والميزات الشاملة في النموذج الأولي</a>
+        <a href="#platforms-comparison">6. مقارنة المشكلة والفجوة والقيمة (10 منصات)</a>
+        <a href="#features-matrix">6.1 مصفوفة مقارنة جميع الميزات (10 قدرات)</a>
+        <a href="#production-roadmap">7. خارطة النظام الحقيقي (Ubuntu / Linux / Windows Server)</a>
+        <a href="#sources-section">8. فهرس المصادر الرسمية ووثائق المشروع</a>
+      </div>
+    </nav>
+
+
+    <!-- Video Embedder Section -->
+    <section class="sec" id="video-section">
+      <h2>بوابة فيديو العرض التطبيقي (حتى 3 دقائق) <a class="sec-anchor" href="#video-section" title="رابط مباشر لهذا القسم">#</a></h2>
+      <p>
+        أضف رابط الفيديو هنا (رابط YouTube أو Google Drive أو ملف MP4 مباشر) واضغط <strong>حفظ وعرض الفيديو</strong> ليظهر فوراً للزوار والمقيّمين داخل الصفحة. لتثبيته لجميع الزوار عند النشر، انسخ الرابط داخل المتغير <span class="mono">DEFAULT_VIDEO_URL</span> في الكود.
+      </p>
+      <div class="video-controls">
+        <input id="video-url-input" class="video-input" type="url" placeholder="https://www.youtube.com/watch?v=... أو رابط Google Drive / MP4" aria-label="رابط فيديو العرض التطبيقي" />
+        <button type="button" id="btn-save-video" class="btn-action">حفظ وعرض الفيديو</button>
+        <button type="button" id="btn-clear-video" class="btn-secondary">مسح الرابط</button>
+      </div>
+      <div id="video-status" class="mono" style="color: #34d399;">لا يوجد فيديو مضاف بعد — أضف الرابط بالأعلى ليظهر للزوار.</div>
+      <div id="video-stage" class="video-stage hidden">
+        <iframe id="video-iframe" class="video-frame hidden" title="فيديو العرض التطبيقي SAFE CLOUD" allowfullscreen></iframe>
+        <video id="video-player" class="video-frame hidden" controls></video>
+        <p style="margin-top:10px; font-size:14px;">
+          الرابط المباشر: <a id="video-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="mono"></a>
+        </p>
+      </div>
+    </section>
+
+
+    <!-- Gap Filled + Automated Control + Concrete AI Role -->
+    <section class="sec" id="gap-and-ai">
+      <h2>الفجوة الحالية في المنصات السحابية، وما الذي سدّه SAFE CLOUD؟ <a class="sec-anchor" href="#gap-and-ai" title="رابط مباشر لهذا القسم">#</a></h2>
+      <p>
+        رغم قوة المنصات السحابية الحالية، تترك فجوة تشغيلية وأمنية واضحة يتحملها المستخدم أو المؤسسة الصغيرة وحدها؛ وقد صُمّم <strong>SAFE CLOUD</strong> لسد هذه الفجوة عبر <strong>تحكم كامل في السيرفر ومراقبته وفحصه بشكل آلي وأوتوماتيكي</strong>:
+      </p>
+      <div class="split">
+        <div>
+          <h3>الفجوة الحالية في المنصات</h3>
+          <p>تفرض المنصات نموذج المسؤولية المشتركة دون ضمان أخطاء إعدادات المستخدم، وتفصل بين لوحة الاستضافة وأدوات الفحص الأمني و<span class="mono">IDS/IPS</span>، كما تغيب المراقبة التنبؤية المستمرة في الخطط المجانية والخفيفة، وتنحصر قواعد البيانات داخل حدود كل مزود.</p>
+        </div>
+        <div>
+          <h3>ما تم سدّه في SAFE CLOUD (آلياً وأوتوماتيكياً)</h3>
+          <p><strong>تحكم كامل في السيرفر</strong> (التشغيل، التقسيم، الملفات، قواعد البيانات، و<span class="mono">.env</span>) مع <strong>فحص أمني آلي وأوتوماتيكي</strong> يوحّد 5 أدوات و8 قواعد ثابتة، و<strong>مراقبة مستمرة 24/7</strong> لخادم محدد أو لجميع الخوادم، وربط الاستضافات وقواعد البيانات المتغيرة تحت ظل واحد.</p>
+        </div>
+      </div>
+
+      <h2 id="ai-role" style="margin-top: 40px;">ما هو عمل نموذج الذكاء الاصطناعي داخل المنصة بالضبط؟ <a class="sec-anchor" href="#ai-role" title="رابط مباشر لهذا العنصر">#</a></h2>
+      <p>
+        لا يقتصر الذكاء الاصطناعي في <strong>SAFE CLOUD</strong> على وصف نظري، بل يؤدي <strong>أربع وظائف تقنية محددة</strong> على البيانات المهيكلة (<span class="mono">JSON</span>) وسجلات الأحداث، مع التزام صارم بصمام الأمان:
+      </p>
+      <div class="strip">
+        <div>
+          <h3>1. ربط المؤشرات والسلوك</h3>
+          <p>يجمع مخرجات أدوات الفحص (<span class="mono">Checkov, Trivy, Prowler</span>) مع سجلات الشبكة (<span class="mono">SSH / IDS / API</span>) ليربط الثغرات المتفرقة في صورة خطر واحد بدل إغراق المستخدم بتنبيهات مشتتة.</p>
+        </div>
+        <div>
+          <h3>2. التنبؤ الاستباقي بالهجوم</h3>
+          <p>يحسب مؤشر خطر تنبؤي (<span class="mono">Predictive Risk %</span>) ويرصد المؤشرات المبكرة (مثل محاولات الفحص المتكررة أو منفذ <span class="mono">0.0.0.0/0</span>) ليصدر إنذاراً مبكراً قبل وقوع الاختراق.</p>
+        </div>
+        <div>
+          <h3>3. ترتيب الأولويات والتوصيات</h3>
+          <p>يصنّف المخاطر إلى مستويات (<span class="mono">P1 / P2 / P3</span>) ويفسّر سبب كل تنبيه، ثم يولّد توصية إصلاح عملية وقابلة للتطبيق المباشر بصيغة <span class="mono">JSON</span>.</p>
+        </div>
+        <div>
+          <h3>4. صمام الأمان والتعافي (Fallback)</h3>
+          <p>يُمنع الوكيل الذكي افتراضياً من تعديل السيرفر؛ يبقى في وضع المراقبة والتنبيه فقط ولا ينفذ أي إجراء وقائي إلا بتفويض صريح من مدير المؤسسة، وإذا تعطل التحليل الذكي تستمر القواعد الثابتة تلقائياً.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Elements of Falak Workshop 03 -->
+    <section class="sec">
+      <h2 id="falak-7-fields">وثيقة النموذج الأولي — العناصر السبعة لمنصة فلك (SAFE CLOUD) <a class="sec-anchor" href="#falak-7-fields" title="رابط مباشر لهذا العنصر">#</a></h2>
+      <div class="field-grid">
+        <div class="field-item">
+          <h3 id="field-1">1. الشريحة الرفيعة <a class="sec-anchor" href="#field-1" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">42 كلمة · الحد المطلوب: 20–60</div>
+          <p>يعالج النموذج فجوة غياب ضمان أخطاء الإعدادات والمراقبة المستمرة، حيث يدير مسؤول السحابة والأمن خوادم محلية (Offline) وسحابية (Online)، ويقسم الموارد ويربط الاستضافات وقواعد البيانات عبر VS Code وGitHub، فيفحص النظام الإعدادات بالذكاء الاصطناعي ويعرض الأولويات والتوصيات لاعتمادها بشرياً دون تعديل تلقائي.</p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-2">2. نموذج الإدخال وجدول البيانات التجريبية <a class="sec-anchor" href="#field-2" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">46 كلمة · الحد المطلوب: 25–90</div>
+          <p>الحقول: نوع الخادم، التقسيم، الاستضافة، قاعدة البيانات، إعدادات الأمان، ووضع التحليل.</p>
+          <p class="mono" style="white-space: pre-line; font-size: 12.5px;">server_mode | نص | Offline/Online
+partitions | رقم | 3
+host_mesh | نص | GitHub+VSCode+Render
+db_cloud | نص | PostgreSQL/Turso
+ssh_open | نص | 0.0.0.0/0
+wildcard_iam | منطقي | true
+mfa_enabled | منطقي | false</p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-3">3. أمر المكون الذكي بأجزائه الستة <a class="sec-anchor" href="#field-3" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">79 كلمة · الحد المطلوب: 40–150</div>
+          <p>الدور: مهندس أمن وسحابة خبير. السياق: منصة SAFE CLOUD لإدارة الخوادم المحلية والسحابية وسد فجوات الاستضافات تحت ظل واحد. المهمة: فحص تقسيمات الخوادم وربط الاستضافات وقواعد البيانات، وترتيب المخاطر (P1/P2/P3) مع توصيات إصلاح. القيود: منع التعديلات التلقائية دون اعتماد بشري، والاعتماد على المدخل فقط. صيغة المخرج: JSON يضم (priority, risk_level, reasoning, recommendation). المثال: مدخل SSH مفتوح 0.0.0.0/0 بدون MFA ← مخرج P1 حرج وتقييد المنفذ.<br /><strong>نتيجة التجربة اليدوية:</strong> نجح الأمر في تصنيف المخاطر وإنتاج JSON مطابق دون تعديل تلقائي.</p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-4">4. السلسلة الكاملة وقواعد التحقق <a class="sec-anchor" href="#field-4" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">52 كلمة · الحد المطلوب: 20–80</div>
+          <p>1) إدخال إعدادات الخادم والتكامل بصيغة JSON. 2) التحقق من الصيغة والاكتمال. 3) محرك القواعد الثابتة (8 ضوابط). 4) تحليل المكوّن الذكي والأولويات. 5) الاعتماد البشري وتصدير التقرير. قواعد التحقق: JSON إلزامي، طول 20–12000 حرف، وصيغة حقول صحيحة. عند الخطأ يتوقف الفحص برسالة واضحة، وعند تعطل الذكاء الاصطناعي تستمر القواعد الثابتة فقط.</p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-5">5. اختبار ثلاثة سيناريوهات <a class="sec-anchor" href="#field-5" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">59 كلمة · الحد المطلوب: 25–90</div>
+          <p style="white-space: pre-line; font-size: 13.5px;">عادي | تقسيم خادم لـ 3 خوادم وربط GitHub بـ PostgreSQL بإعدادات آمنة | 0 مخالفات وأمان 100% | نجح
+حدّي | ربط استضافات مجانية مع Turso مع SSH مفتوح وصلاحيات IAM مفرطة | إنذار مبكر وتصنيف P1 حرج | نجح
+فشل | محاكاة تعطل المكون الذكي (Fallback) | توثيق العطل واستمرار القواعد الثابتة دون تعديل تلقائي | نجح</p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-6">6. رابط النموذج ورابط المقطع <a class="sec-anchor" href="#field-6" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">14 كلمة · الحد المطلوب: 2–30</div>
+          <p>رابط النموذج: <a href="https://safe-cloud-mvp.vercel.app/" target="_blank" rel="noopener noreferrer" class="mono">https://safe-cloud-mvp.vercel.app/</a> | رابط الفيديو: <span id="field6-video-preview" class="mono">[أضف رابط الفيديو القصير ≤ 3 دقائق هنا]</span></p>
+        </div>
+        <div class="field-item">
+          <h3 id="field-7">7. ما الذي ينقص النموذج؟ <a class="sec-anchor" href="#field-7" title="رابط مباشر لهذا العنصر">#</a></h3>
+          <div class="field-meta">26 كلمة · الحد المطلوب: 12–40</div>
+          <p>الوظائف الثلاث: تثبيت وكيل الربط المحلي (Offline/Online Agent)، تفعيل أنفاق قواعد البيانات (PostgreSQL/Oracle/Turso)، وتصدير تقارير PDF الموثقة. المؤجّل عمداً: التوسع متعدد السحابات والأتمتة الكاملة دون موافقة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Prototype Capabilities -->
+    <div class="band">
+      <div class="band-inner">
+        <h2 id="mvp-capabilities">القدرات والميزات الشاملة في النموذج الأولي الحالي (SAFE CLOUD) <a class="sec-anchor" href="#mvp-capabilities" title="رابط مباشر لهذا العنصر">#</a></h2>
+        <p>يجمع النموذج المنشور على Vercel حزمة متكاملة من الأدوات التي لا تتوفر مجتمعةً في استضافة مجانية أو لوحة تقليدية واحدة:</p>
+        <div class="strip">
+          <div>
+            <h3>1. استوديو إنشاء وبرمجة السيرفر</h3>
+            <p>وضعان للإنشاء: بيئة برمجة سحابية شبيهة بـ VS Code بـ 4 لوحات قابلة للطي مع 4 نماذج ذكاء (Gemini, Claude, ChatGPT, Codex) وفحص Checkov+Trivy قبل النشر، أو إعداد يدوي سريع لـ 10 لغات برمجة و7 محركات قواعد بيانات.</p>
+          </div>
+          <div>
+            <h3>2. لوحة تحكم الخادم (9 تبويبات)</h3>
+            <p>تشغيل وإعادة تشغيل وإيقاف، كونسول حي، إدارة الحزم والأعضاء ورسوم استهلاك CPU/RAM، مدير الملفات، إضافات (FFmpeg, aria2, Tesseract)، النسخ الاحتياطي، النشر (Git/Docker/VS Code/ZIP)، قواعد البيانات، مفاتيح API/MCP، ومتغيرات .env.</p>
+          </div>
+          <div>
+            <h3>3. الفحص الموحد والمراقبة 24/7</h3>
+            <p>توحيد مخرجات 5 أدوات فحص (Checkov, Trivy, Prowler, ScoutSuite, Steampipe) و8 قواعد ثابتة، وزر فحص جميع الخوادم، ومراقبة مستمرة لخادم محدد أو للأسطول بالكامل مع تنبؤ مبكر بالهجمات ومؤشرات البند 7 (ms ونسبة التنبيهات).</p>
+          </div>
+          <div>
+            <h3>4. الهوية، RBAC، وصمام الأمان</h3>
+            <p>لوحة تسجيل دخول وإنشاء حساب (Email وGitHub وMicrosoft وGoogle)، وتحقق RBAC للأدوار الأربعة، ووكلاء ذكاء اصطناعي محكومون بصمام أمان إلزامي يمنع أي تغيير تلقائي دون تفويض صريح من مدير المؤسسة وسجل تدقيق Audit Log.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extended 10-Platform Comparison -->
+    <section class="sec">
+      <h2 id="platforms-comparison">المقارنة الموسّعة: 10 منصات سحابية مقابل حلول SAFE CLOUD <a class="sec-anchor" href="#platforms-comparison" title="رابط مباشر لهذا العنصر">#</a></h2>
+      <p>
+        يقارن الجدول التالي بين عشر منصات حقيقية وبين نموذج <strong>SAFE CLOUD</strong> من أربع زوايا دقيقة: آلية عمل الأداة، المشكلة أو القصور فيها، كيف عالج SAFE CLOUD هذه المشكلة، وما القيمة المضافة الناتجة للمستخدم والمؤسسة.
+      </p>
+
+            <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>المنصة / الأداة</th>
+              <th>مشكلة الأداة وحدود الفجوة</th>
+              <th>دور الذكاء الاصطناعي والإنذارات (المنصة مقابل نموذجنا)</th>
+              <th>الحل والقيمة المضافة في SAFE CLOUD</th>
+              <th>الفرق الجوهري</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. AWS</strong><br /><a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener noreferrer">تعقيد IAM وجدران الحماية، وعدم ضمان أخطاء العميل (فجوة المسؤولية المشتركة)، وتكاليف منفصلة للفحص.</a></td>
+              <td><strong>AWS:</strong> ذكاء وإنذارات GuardDuty مدفوعة ومعقدة.<br /><strong>نموذجنا:</strong> ربط مؤشرات مجاني مدمج وإنذار مبكر 24/7 قبل الاختراق.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#settings" target="_blank" rel="noopener noreferrer">ضبط وتبسيط الإعدادات والصلاحيات (SSH/IAM/HTTPS) في لوحة الضبط + أولويات P1/P2/P3 + صمام أمان يمنع الأخطاء الكارثية ↗</a></td>
+              <td>AWS تبيع بنية معقدة وتترك أخطاء الضبط عليك؛ <strong>SAFE CLOUD</strong> يحمي إعداداتك بواجهة مبسطة وصمام أمان.</td>
+            </tr>
+            <tr>
+              <td><strong>2. Microsoft Azure</strong><br /><a href="https://www.microsoft.com/en-us/security/business/cloud-security/microsoft-defender-cloud" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://azure.microsoft.com/en-us/pricing/details/defender-for-cloud/" target="_blank" rel="noopener noreferrer">حزمة Defender موجهة للشركات الكبرى ومكلفة ومعقدة على المؤسسات الصغيرة والمطورين.</a></td>
+              <td><strong>Azure:</strong> إنذارات Defender متقدمة باشتراك مدفوع.<br /><strong>نموذجنا:</strong> تنبؤ بالمخاطر بنسبة % + قياس دقة التنبيهات وزمن الفحص ms.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#studio" target="_blank" rel="noopener noreferrer">دمج فحص CSPM مع إنشاء وإدارة وتقسيم السيرفر في لوحة واحدة خفيفة ↗</a></td>
+              <td>Azure تفصل لوحة الأمان عن البساطة وتفرض كلفة عالية؛ <strong>نموذجنا</strong> يجمع الإدارة والأمان بيسر للشركات الناشئة.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Google Cloud</strong><br /><a href="https://cloud.google.com/security/products/security-command-center" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://cloud.google.com/security/products/security-command-center" target="_blank" rel="noopener noreferrer">التنبؤ والأتمتة والحماية متعددة السحابات محصورة في باقة Enterprise المدفوعة فقط.</a></td>
+              <td><strong>GCP:</strong> إنذارات قياسية أساسية، والذكاء التنبؤي مدفوع.<br /><strong>نموذجنا:</strong> تحليل سلوكي وتنبؤ استباقي + وضع تعافي Fallback عند العطل.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#monitoring" target="_blank" rel="noopener noreferrer">فتح التنبؤ المبكر والفحص متعدد المنصات محلياً وسحابياً مع سجل تدقيق ↗</a></td>
+              <td>GCP تحصر الحماية متعددة السحابات في Enterprise؛ <strong>SAFE CLOUD</strong> يتيحها من البداية وباعتماد بشري إلزامي.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Vercel</strong><br /><a href="https://vercel.com/docs" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://vercel.com/pricing" target="_blank" rel="noopener noreferrer">مصممة للواجهات الأمامية؛ لا تدعم تقسيم الخوادم التقليدية أو قواعد بيانات شاملة أو خوادم محلية.</a></td>
+              <td><strong>Vercel:</strong> سجلات نشر وأداء فقط دون إنذار أمني للخادم.<br /><strong>نموذجنا:</strong> وكيل ذكاء يراقب المنافذ وIDS ويصدر إنذاراً مبكراً.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#mesh" target="_blank" rel="noopener noreferrer">ربط استضافة الواجهة بخوادم خلفية وقواعد بيانات خارجية كفريق واحد ↗</a></td>
+              <td>Vercel منصة نشر واجهات؛ <strong>SAFE CLOUD</strong> مركز قيادة يربط الواجهات بالخوادم والقواعد والأمن.</td>
+            </tr>
+            <tr>
+              <td><strong>5. Render</strong><br /><a href="https://render.com/articles/platforms-with-a-real-free-tier-for-developers-in-2026" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://render.com/articles/platforms-with-a-real-free-tier-for-developers-in-2026" target="_blank" rel="noopener noreferrer">الخطة المجانية تتوقف بعد 15 دقيقة خمول، وPostgres ينتهي خلال 30 يوماً، ولا يوجد فحص أمني.</a></td>
+              <td><strong>Render:</strong> تنبيهات تشغيل/تعطل فقط دون ذكاء اصطناعي أمني.<br /><strong>نموذجنا:</strong> مراقبة متصلة 24/7 وكشف ثغرات وتنبيه قبل الاختراق.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#mesh" target="_blank" rel="noopener noreferrer">تعويض قيود الخطة المجانية بربط قواعد خارجية مستقلة ومراقبة مستمرة ↗</a></td>
+              <td>Render تقيد الخطة المجانية وتغفل الأمن الاستباقي؛ <strong>نموذجنا</strong> يجمع الاستضافات المجانية ويؤمّنها 24/7.</td>
+            </tr>
+            <tr>
+              <td><strong>6. Railway</strong><br /><a href="https://railway.com/pricing" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://railway.com/features" target="_blank" rel="noopener noreferrer">فوترة حسب الاستهلاك قد ترتفع فجأة، وتخلو من وكيل تنبؤ أمني أو RBAC بأربع رتب.</a></td>
+              <td><strong>Railway:</strong> تنبيهات استهلاك موارد فقط دون تحليل هجمات.<br /><strong>نموذجنا:</strong> ربط استهلاك الموارد بمؤشرات الاختراق وترتيب الأولويات.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#studio" target="_blank" rel="noopener noreferrer">تقسيم الموارد (CPU/RAM) + وكلاء ذكاء مقيدون بصمام أمان ↗</a></td>
+              <td>Railway تسهل نشر الحاويات فقط؛ <strong>SAFE CLOUD</strong> يضيف ضبط الحدود، والأدوار الأربعة، وصمام الأمان.</td>
+            </tr>
+            <tr>
+              <td><strong>7. DigitalOcean</strong><br /><a href="https://www.digitalocean.com/security/shared-responsibility-model-app-platform" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://www.digitalocean.com/products/droplets" target="_blank" rel="noopener noreferrer">في Droplets يتحمل المستخدم تحديثات النظام والجدار الناري وأمن SSH وحده دون إنذار مدمج.</a></td>
+              <td><strong>DigitalOcean:</strong> مراقبة CPU/RAM دون ذكاء تنبؤي بالاختراق.<br /><strong>نموذجنا:</strong> كشف منافذ 0.0.0.0/0 وغياب MFA وإنذار مبكر فوري.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#monitoring" target="_blank" rel="noopener noreferrer">خيار تفويض المراقبة والفحص للمنصة + IDE سحابي وفحص قبل النشر ↗</a></td>
+              <td>DigitalOcean تمنحك خادماً خاماً وتتركك للأمن وحدك؛ <strong>نموذجنا</strong> يراقبه ويفحصه آلياً نيابةً عنك.</td>
+            </tr>
+            <tr>
+              <td><strong>8. Cloudflare</strong><br /><a href="https://developers.cloudflare.com/workers-vpc/configuration/tunnel/" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://developers.cloudflare.com/workers-vpc/configuration/tunnel/" target="_blank" rel="noopener noreferrer">قوية في الأنفاق الصادرة وأمن الشبكة، لكنها لا تدير ملفات الخادم أو قواعد البيانات أو لغات البرمجة.</a></td>
+              <td><strong>Cloudflare:</strong> إنذارات شبكة وWAF (CASB مدفوع).<br /><strong>نموذجنا:</strong> إنذارات شاملة تجمع الشبكة + ملفات الكود + الصلاحيات + قواعد البيانات.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#mesh" target="_blank" rel="noopener noreferrer">دمج النفق الصادر الآمن مع لوحة إدارة السيرفر والقواعد والفحص الكامل ↗</a></td>
+              <td>Cloudflare طبقة حماية شبكة؛ <strong>SAFE CLOUD</strong> نظام إدارة سيرفر وتطبيقات وقواعد بيانات وأمن متكامل.</td>
+            </tr>
+            <tr>
+              <td><strong>9. Coolify</strong><br /><a href="https://coolify.io/self-hosted" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://coolify.io/self-hosted" target="_blank" rel="noopener noreferrer">تثبيت ذاتي ممتاز للحاويات، لكنها تفتقر لمحرك فحص ثغرات متعدد الأدوات والتنبؤ وصمام الأمان.</a></td>
+              <td><strong>Coolify:</strong> لا تستخدم ذكاءً اصطناعياً للتنبؤ؛ إنذارات حالة حاوية فقط.<br /><strong>نموذجنا:</strong> 5 أدوات فحص + ذكاء تنبؤي + صمام أمان بشري.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#scanner" target="_blank" rel="noopener noreferrer">جمع سهولة التثبيت الذاتي Offline مع أمن سيبراني ذكي وRBAC ↗</a></td>
+              <td>Coolify أداة نشر ذاتي دون عقل أمني؛ <strong>SAFE CLOUD</strong> يضيف الذكاء الاصطناعي الأمني والفحص الآلي وصمام الأمان.</td>
+            </tr>
+            <tr>
+              <td><strong>10. Pella.app</strong><br /><a href="https://www.pella.app/discord-bot-hosting" target="_blank" rel="noopener noreferrer">الوثيقة الرسمية</a></td>
+              <td><a href="https://www.pella.app/free-express-hosting" target="_blank" rel="noopener noreferrer">موارد محدودة (0.1 CPU / 100MB RAM)، مخصصة للبوتات، دون تقسيم سيرفر أو فحص أمني.</a></td>
+              <td><strong>Pella:</strong> كونسول نصوص بلا ذكاء اصطناعي وبلا إنذارات أمنية.<br /><strong>نموذجنا:</strong> وكيل ذكاء ومراقبة 24/7 وإنذارات مصنفة P1/P2/P3.</td>
+              <td><a href="https://safe-cloud-mvp.vercel.app/#studio" target="_blank" rel="noopener noreferrer">ترقية لوحة التحكم البسيطة إلى مركز شامل للبرمجة والتقسيم والأمن ↗</a></td>
+              <td>Pella استضافة خفيفة محدودة؛ <strong>SAFE CLOUD</strong> منصة مؤسسية لتقسيم الخوادم وتكامل القواعد والأمن الذكي.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- Full Feature-by-Feature Matrix (10 Prototype Capabilities vs 10 Cloud Platforms) -->
+    <section class="sec" id="features-matrix">
+      <h2>مصفوفة مقارنة جميع ميزات النموذج الأولي أمام المنصات العشر <a class="sec-anchor" href="#features-matrix" title="رابط مباشر لهذا القسم">#</a></h2>
+      <p>
+        تقارن هذه المصفوفة جميع الإمكانات المتاحة في نموذج <strong>SAFE CLOUD</strong> الأولي مباشرةً مع المنصات العشر العالمية. يمكنك تصفية المنصات حسب الفئة:
+      </p>
+      <div class="filter-bar" role="group" aria-label="تصفية المنصات حسب الفئة">
+        <button type="button" class="filter-btn active" data-filter="all">جميع المنصات (10 + SAFE CLOUD)</button>
+        <button type="button" class="filter-btn" data-filter="hyperscaler">السحابات الكبرى (AWS / Azure / GCP)</button>
+        <button type="button" class="filter-btn" data-filter="paas">منصات المطورين (Vercel / Render / Railway / DO)</button>
+        <button type="button" class="filter-btn" data-filter="infra">الشبكة والاستضافة الذاتية (Cloudflare / Coolify / Pella)</button>
+      </div>
+      <div class="table-wrap">
+        <table id="matrix-table">
+          <thead>
+            <tr>
+              <th>المنصة</th>
+              <th>تقسيم الخادم (Partitions)</th>
+              <th>خادم محلي (Offline)</th>
+              <th>تكامل قواعد خارجية (Mesh)</th>
+              <th>فحص آلي متعدد الأدوات</th>
+              <th>مراقبة 24/7 وتنبؤ ذكي</th>
+              <th>صمام أمان إلزامي</th>
+              <th>RBAC + Audit Log</th>
+              <th>IDE + VS Code/GitHub</th>
+              <th>تعافي Fallback + ms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-cat="core">
+              <td><strong>SAFE CLOUD (نموذجنا)</strong></td>
+              <td class="yes">نعم (تقسيم الموارد)</td>
+              <td class="yes">نعم (تصميم هجين)</td>
+              <td class="yes">نعم (Postgres/Oracle/Turso)</td>
+              <td class="yes">5 أدوات + 8 قواعد</td>
+              <td class="yes">نعم (فردي + الكل)</td>
+              <td class="yes">نعم (بإذن المدير)</td>
+              <td class="yes">4 أدوار + تدقيق</td>
+              <td class="yes">IDE + GitHub/VSCode</td>
+              <td class="yes">نعم (Fallback + ms)</td>
+            </tr>
+            <tr data-cat="hyperscaler">
+              <td><strong>1. AWS</strong></td>
+              <td class="yes">عبر VMs/ECS</td>
+              <td class="partial">Outposts مكلف</td>
+              <td class="partial">محدود بـ AWS</td>
+              <td class="partial">مدفوع منفصل</td>
+              <td class="partial">مدفوع (GuardDuty)</td>
+              <td class="partial">ضبط يدوي معقد</td>
+              <td class="yes">IAM + CloudTrail</td>
+              <td class="partial">Cloud9/CodeBuild</td>
+              <td class="no">غير موحد افتراضياً</td>
+            </tr>
+            <tr data-cat="hyperscaler">
+              <td><strong>2. Microsoft Azure</strong></td>
+              <td class="yes">عبر VMs/AKS</td>
+              <td class="yes">Azure Local</td>
+              <td class="yes">Defender Multicloud</td>
+              <td class="yes">Defender (مدفوع)</td>
+              <td class="yes">Defender (مدفوع)</td>
+              <td class="partial">سياسات مؤسسية</td>
+              <td class="yes">RBAC شامل</td>
+              <td class="yes">VS Code + GitHub</td>
+              <td class="partial">دون صمام مجاني</td>
+            </tr>
+            <tr data-cat="hyperscaler">
+              <td><strong>3. Google Cloud</strong></td>
+              <td class="yes">عبر GCE/GKE</td>
+              <td class="partial">Anthos مدفوع</td>
+              <td class="partial">Enterprise فقط</td>
+              <td class="yes">SCC Standard</td>
+              <td class="partial">Premium/Enterprise</td>
+              <td class="partial">Playbooks مدفوعة</td>
+              <td class="yes">IAM + Audit</td>
+              <td class="partial">Cloud Shell</td>
+              <td class="partial">في الفئات المدفوعة</td>
+            </tr>
+            <tr data-cat="paas">
+              <td><strong>4. Vercel</strong></td>
+              <td class="no">غير متاح</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">سوق إضافات</td>
+              <td class="no">غير متاح للخوادم</td>
+              <td class="no">سجلات أداء فقط</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">في خطط الفرق</td>
+              <td class="yes">GitHub تلقائي</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="paas">
+              <td><strong>5. Render</strong></td>
+              <td class="no">خدمات منفصلة</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">متغيرات بيئة يدوياً</td>
+              <td class="no">غير متاح</td>
+              <td class="no">تنبيهات تشغيل فقط</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">في خطط الفرق</td>
+              <td class="yes">Git-push</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="paas">
+              <td><strong>6. Railway</strong></td>
+              <td class="partial">حاويات مشروع</td>
+              <td class="no">غير متاح</td>
+              <td class="yes">قواعد متنوعة</td>
+              <td class="no">غير متاح</td>
+              <td class="no">مراقبة موارد فقط</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">في خطط الفرق</td>
+              <td class="yes">GitHub/Docker</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="paas">
+              <td><strong>7. DigitalOcean</strong></td>
+              <td class="partial">Droplets منفصلة</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">Trusted Sources</td>
+              <td class="no">إعداد يدوي</td>
+              <td class="no">مؤشرات CPU/RAM</td>
+              <td class="no">مسؤولية المستخدم</td>
+              <td class="partial">أدوار فرق</td>
+              <td class="partial">App Platform Git</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="infra">
+              <td><strong>8. Cloudflare</strong></td>
+              <td class="no">Workers بلا خوادم</td>
+              <td class="partial">نفق Tunnel فقط</td>
+              <td class="partial">R2/D1 فقط</td>
+              <td class="partial">CASB مدفوع</td>
+              <td class="partial">أمن شبكة/WAF</td>
+              <td class="partial">Zero Trust</td>
+              <td class="yes">Access ZTNA</td>
+              <td class="partial">Wrangler CLI</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="infra">
+              <td><strong>9. Coolify</strong></td>
+              <td class="partial">حاويات Docker</td>
+              <td class="yes">تثبيت ذاتي 100%</td>
+              <td class="partial">قواعد محلية/Docker</td>
+              <td class="no">غير مدمج</td>
+              <td class="no">CPU/RAM فقط</td>
+              <td class="no">غير متاح</td>
+              <td class="partial">أدوار أساسية</td>
+              <td class="yes">Git/Docker</td>
+              <td class="no">غير متاح</td>
+            </tr>
+            <tr data-cat="infra">
+              <td><strong>10. Pella.app</strong></td>
+              <td class="no">غير متاح</td>
+              <td class="no">غير متاح</td>
+              <td class="no">غير متاح</td>
+              <td class="no">غير متاح</td>
+              <td class="no">كونسول فقط</td>
+              <td class="no">غير متاح</td>
+              <td class="no">حساب فردي</td>
+              <td class="partial">رفع ملفات/Git</td>
+              <td class="no">غير متاح</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Production Roadmap & OS Installation -->
+    <section class="sec">
+      <h2 id="production-roadmap">خارطة بناء النظام الحقيقي: التثبيت على أنظمة التشغيل والربط الهجين <a class="sec-anchor" href="#production-roadmap" title="رابط مباشر لهذا العنصر">#</a></h2>
+      <p>
+        لتجاوز حدود النموذج الأولي إلى نظام إنتاجي حقيقي تستخدمه المؤسسات الصغيرة والمتوسطة، يعتمد التصميم على مسارين متكاملين:
+      </p>
+      <div class="split">
+        <div>
+          <h3>1. التثبيت الذاتي المحلي (Ubuntu / Linux / Windows Server)</h3>
+          <p>
+            تنزّل المؤسسة حزمة <strong>SAFE CLOUD Control Plane</strong> (عبر حاوية Docker أو حزمة تثبيت مباشرة) على خادمها الخاص (<span class="mono">Ubuntu 22.04/24.04 LTS</span> أو أي توزيعة Linux أو <span class="mono">Windows Server</span>). يتم تقسيم الخادم الواحد إلى عدة خوادم معزولة (مثل 3 خوادم لخدمات مختلفة) مع تحديد حصص <span class="mono">CPU / RAM</span>، وإدارة المواقع، والرفع عبر <span class="mono">VS Code</span> و<span class="mono">GitHub</span>، وتشغيل الفحص والمراقبة محلياً بالكامل (Offline).
+          </p>
+        </div>
+        <div>
+          <h3>2. الربط السحابي للخادم المحلي وتكامل المنصات</h3>
+          <p>
+            عند تشغيل المنصة على مستضيف سحابي، تثبّت المؤسسة على خادمها المحلي وكيلاً خفيفاً (<strong>SAFE CLOUD Agent</strong>) ينشئ <strong>نفقاً مشفراً صادراً (mTLS / WireGuard)</strong> نحو المنصة دون كشف منافذ الخادم للإنترنت. ومن خلال الشبكة الموحدة (Mesh)، تُربط استضافات الأكواد المجانية (مثل Vercel/Render) بقواعد بيانات خارجية متغيرة (مثل PostgreSQL وOracle وTurso) لتعمل جميعها تحت ظل واحد وكفريق واحد.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <blockquote class="pull">
+      الاستضافات التقليدية تمنحك مساحةً وتتركك وحدك أمام أخطاء الإعدادات؛ أما SAFE CLOUD فيمنحك الإدارة والتقسيم والتكامل، ويضع بجانبك وكيلاً أمنياً يراقب ويتنبأ ولا يتصرف إلا بإذنك.
+    </blockquote>
+
+    <section class="sec">
+      <h2 id="sources-section">فهرس المصادر الرسمية ووثائق المشروع <a class="sec-anchor" href="#sources-section" title="رابط مباشر لهذا العنصر">#</a></h2>
+      <ol class="sources">
+        <li><a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener noreferrer">AWS Shared Responsibility Model</a></li>
+        <li><a href="https://www.microsoft.com/en-us/security/business/cloud-security/microsoft-defender-cloud" target="_blank" rel="noopener noreferrer">Microsoft Defender for Cloud</a></li>
+        <li><a href="https://cloud.google.com/security/products/security-command-center" target="_blank" rel="noopener noreferrer">Google Cloud Security Command Center</a></li>
+        <li><a href="https://vercel.com/pricing" target="_blank" rel="noopener noreferrer">Vercel Platform &amp; Pricing</a></li>
+        <li><a href="https://render.com/articles/platforms-with-a-real-free-tier-for-developers-in-2026" target="_blank" rel="noopener noreferrer">Render Free Tier &amp; Managed PostgreSQL</a></li>
+        <li><a href="https://railway.com/features" target="_blank" rel="noopener noreferrer">Railway Features &amp; Databases</a></li>
+        <li><a href="https://www.digitalocean.com/security/shared-responsibility-model-app-platform" target="_blank" rel="noopener noreferrer">DigitalOcean Droplets &amp; Shared Responsibility</a></li>
+        <li><a href="https://developers.cloudflare.com/workers-vpc/configuration/tunnel/" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel &amp; Zero Trust</a></li>
+        <li><a href="https://coolify.io/self-hosted" target="_blank" rel="noopener noreferrer">Coolify Self-Hosted PaaS</a></li>
+        <li><a href="https://www.pella.app/free-express-hosting" target="_blank" rel="noopener noreferrer">Pella.app Hosting</a></li>
+              <li><a href="https://safe-cloud-mvp.vercel.app/" target="_blank" rel="noopener noreferrer">النموذج الأولي التفاعلي الحي SAFE CLOUD (Vercel)</a></li>
+        <li><a href="https://drive.google.com/file/d/1myy1juWf9TGNMnvtfsDU9-EjFchaO0gU/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">الوثيقة التعريفية للمشروع (01) — شراع 2026</a></li>
+        <li><a href="https://drive.google.com/file/d/1OHzAC94vt-gFmZi1U90QNGJsofBgrVmz/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">المخطط الهندسي للمشروع (02) — شراع 2026</a></li>
+      </ol>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      // يمكن وضع رابط الفيديو هنا مباشرةً قبل النشر ليظهر تلقائياً للجميع:
+      const DEFAULT_VIDEO_URL = "";
+      const STORAGE_KEY = "safe_cloud_demo_video_url";
+
+      const input = document.getElementById("video-url-input");
+      const btnSave = document.getElementById("btn-save-video");
+      const btnClear = document.getElementById("btn-clear-video");
+      const statusEl = document.getElementById("video-status");
+      const stageEl = document.getElementById("video-stage");
+      const iframeEl = document.getElementById("video-iframe");
+      const playerEl = document.getElementById("video-player");
+      const directLinkEl = document.getElementById("video-direct-link");
+      const field6Preview = document.getElementById("field6-video-preview");
+
+      function parseEmbedUrl(rawUrl) {
+        try {
+          const u = new URL(rawUrl);
+          if (u.hostname.includes("youtube.com") && u.searchParams.get("v")) {
+            return { type: "iframe", src: "https://www.youtube.com/embed/" + encodeURIComponent(u.searchParams.get("v")) };
+          }
+          if (u.hostname === "youtu.be" && u.pathname.length > 1) {
+            return { type: "iframe", src: "https://www.youtube.com/embed/" + encodeURIComponent(u.pathname.slice(1)) };
+          }
+          if (u.hostname.includes("drive.google.com") && u.pathname.includes("/file/d/")) {
+            const parts = u.pathname.split("/file/d/");
+            const id = (parts[1] || "").split("/")[0];
+            if (id) return { type: "iframe", src: "https://drive.google.com/file/d/" + encodeURIComponent(id) + "/preview" };
+          }
+          if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(u.pathname)) {
+            return { type: "video", src: rawUrl };
+          }
+          return { type: "link", src: rawUrl };
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function renderVideo(url) {
+        const clean = (url || "").trim();
+        if (!clean) {
+          stageEl.classList.add("hidden");
+          iframeEl.classList.add("hidden");
+          playerEl.classList.add("hidden");
+          iframeEl.src = "";
+          playerEl.src = "";
+          statusEl.textContent = "لا يوجد فيديو مضاف بعد — أضف الرابط بالأعلى ليظهر للزوار.";
+          if (field6Preview) field6Preview.textContent = "[يُحدّث تلقائياً من بوابة الفيديو بالأعلى]";
+          return;
+        }
+        const parsed = parseEmbedUrl(clean);
+        if (!parsed) {
+          statusEl.textContent = "صيغة الرابط غير صالحة — أدخل رابطاً يبدأ بـ https://";
+          return;
+        }
+        stageEl.classList.remove("hidden");
+        directLinkEl.href = clean;
+        directLinkEl.textContent = clean;
+        if (field6Preview) field6Preview.textContent = clean;
+
+        if (parsed.type === "iframe") {
+          playerEl.classList.add("hidden");
+          playerEl.src = "";
+          iframeEl.src = parsed.src;
+          iframeEl.classList.remove("hidden");
+          statusEl.textContent = "تم تفعيل عرض الفيديو المضمّن للزوار بنجاح.";
+        } else if (parsed.type === "video") {
+          iframeEl.classList.add("hidden");
+          iframeEl.src = "";
+          playerEl.src = parsed.src;
+          playerEl.classList.remove("hidden");
+          statusEl.textContent = "تم تفعيل مشغّل الفيديو المباشر للزوار بنجاح.";
+        } else {
+          iframeEl.classList.add("hidden");
+          playerEl.classList.add("hidden");
+          statusEl.textContent = "تم حفظ رابط الفيديو المباشر وإدراجه في الصفحة والحقل السادس.";
+        }
+      }
+
+      btnSave.addEventListener("click", () => {
+        const val = input.value.trim();
+        if (!val) {
+          statusEl.textContent = "أدخل رابط الفيديو أولاً.";
+          return;
+        }
+        try { localStorage.setItem(STORAGE_KEY, val); } catch (e) {}
+        renderVideo(val);
+      });
+
+      btnClear.addEventListener("click", () => {
+        input.value = "";
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        renderVideo("");
+      });
+
+      let initial = DEFAULT_VIDEO_URL;
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) initial = saved;
+      } catch (e) {}
+      if (initial) input.value = initial;
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const cat = btn.getAttribute('data-filter');
+          document.querySelectorAll('#matrix-table tbody tr').forEach(tr => {
+            const rowCat = tr.getAttribute('data-cat');
+            tr.style.display = (cat === 'all' || rowCat === 'core' || rowCat === cat) ? '' : 'none';
+          });
+        });
+      });
+
+      renderVideo(initial);
+    })();
+  </script>
+</body>
+</html>
